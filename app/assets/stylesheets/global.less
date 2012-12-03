@@ -1,0 +1,157 @@
+body {
+  background: @grayLighter;
+}
+
+.wrapper {
+  background: @white;
+  padding-bottom: 40px;
+}
+.app-header {
+  background: #333;
+  padding: 20px 0;
+
+  .auth, .search {
+    margin-top: 5px;
+  }
+
+  form {
+    margin: 0;
+  }
+
+
+  a.logo, a.logo:hover {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  .logo {
+    font-family: "Julius Sans One";
+    font-size: 26px;
+    display: block;
+
+    .hilight {
+      color: #EE0000;
+    }
+
+    small {
+      font-size: 15px;
+      padding-top: 3px;
+      display: block;
+    }
+  }
+}
+
+.btn-large [class^="icon-"],
+.btn-large i,
+.btn-large [class*=" icon-"] {
+  margin-top: 4px;
+  -webkit-transform: scale(1.2);
+}
+
+.auth {
+  text-align: right;
+
+  > * {
+    text-align: left;
+  }
+
+  .btn-group .btn {
+    .border-radius(0);
+  }
+
+  img {
+    @size: 20px;
+    width: @size;
+    height: @size;
+    border: solid 1px rgba(255,255,255, 0.5);
+    margin: 0 5px 0 -5px;
+  }
+}
+
+.tags {
+  line-height: 2.2;
+}
+
+.tags-link {
+  font-weight: bold;
+  text-align: right;
+  font-size: 18px;
+  padding: 5px ;
+  margin-top: 5px;
+  background: @grayLighter;
+  border-bottom: solid 1px darken(@grayLighter, 7%);
+
+}
+
+.sidebar-header {
+  border-bottom: solid 1px @grayLighter;
+}
+
+.user {
+  img {
+    @size: 20px;
+    height: @size;
+    width: @size;
+    border: solid 1px @grayLight;
+    .border-radius(2px);
+  }
+}
+
+.footer {
+  background: @grayLighter;
+  color: @grayLight;
+  border-top: solid 1px darken(@grayLighter, 7%);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.uses {
+  text-align: right;
+}
+
+
+.alert {
+  margin-top: 20px;
+}
+
+.likebutton {
+  display: inline;
+}
+
+.usethis, .dontusethis {
+  width: 94px;
+}
+.usethis {
+  .hover {
+    display: none;
+  }
+
+
+  &:hover {
+    .buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+    .hover {
+      display: inline;
+    }
+
+    .current {
+      display: none;
+    }
+  }
+}
+
+.alert-admin {
+  padding: 8px 14px;
+  font-size: 16px;
+  .message {
+    padding-top: 5px;
+  }
+  .actions {
+    text-align: right;
+  }
+}
+
+.meta {
+  margin-top: 20px;
+  color: @grayLight;
+  font-style: italic;
+}

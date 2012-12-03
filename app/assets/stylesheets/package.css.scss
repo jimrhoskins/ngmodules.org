@@ -1,0 +1,41 @@
+// Place all the styles related to the Package controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.package .title {
+  font-size: 18px;
+}
+.detail {
+  border-width: 0 1px 1px;
+  border-style: solid;
+  border-color: #DDD;
+  padding: 20px;
+}
+
+.detail-tabs {
+  margin-bottom: 0;
+}
+
+.readme {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.download {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.users {
+  text-align: right;
+
+  a {
+    margin-left: 5px;
+  }
+}
+
+.admin {
+  margin-top: 5px;
+  text-align: right;
+}

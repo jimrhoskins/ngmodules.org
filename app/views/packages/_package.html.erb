@@ -1,0 +1,29 @@
+<%= div_for package do %>
+  <div class="well">
+    <div class="row-fluid">
+      <div class="span9">
+        <strong class="title"><%= link_to package.name, package %></strong>
+      </div>
+      <div class="uses span3">
+        <i class="icon-thumbs-up"></i>
+        <%= pluralize_person_uses package.uses.count %>
+      </div>
+    </div>
+    <p><%= package.description %></p>
+    <div class="tags">
+      <%= render partial: "tags/tag", collection: package.tags %>
+    </div>
+
+    <% if can? :update, package %>
+      <div class="admin">
+        <%= link_to [:edit, package], class: "btn btn-warning btn-mini" do %>
+          <%= icon :edit, true %> Edit
+        <% end %>
+        <%= link_to package, method: :destroy, confirm: "You sure?", class: "btn btn-danger btn-mini" do %>
+          <%= icon :trash, true %> Remove
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>

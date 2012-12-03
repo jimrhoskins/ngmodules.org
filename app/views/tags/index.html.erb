@@ -1,0 +1,9 @@
+<% title "All Tags" %>
+
+<% @tags.each do |tag| %>
+  <%= link_to tag_path(tag.name), class: "btn btn-info btn-small" do %>
+    <i class="icon-white icon-tag" ></i>
+    <%= tag.name %> (<%= tag.count %>)
+
+  <% end %>
+<% end %>

@@ -1,0 +1,49 @@
+<%= form_for @package, html: {class: "form-horizontal"} do |f| %>
+  <%= f.error_messages %>
+  <div class="control-group">
+    <%= f.label :github_repo, "Github URL", class: "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on">github.com/</span>
+        <%= f.text_field :github_repo, placeholder: "username/project", autofocus: true %>
+      </div>
+      <a href="#" class="load-from-github btn btn-info">
+        <i class="icon-white icon-circle-arrow-down"></i>
+        Load Details from Github
+      </a>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, class: "input-xlarge", placeholder: "myModule" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :description, class: "input-xxlarge", placeholder: "A short sentence about the module." %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :homepage, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :homepage, class: "input-xlarge", placeholder: "http://awesome-module.org" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tag_list, "Tags", class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :tag_list, class: "input-xlarge", placeholder: "directive, api, maps" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :readme_markdown, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_area :readme_markdown, class: "input-xxlarge", placeholder: "http://awesome-module.org" %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

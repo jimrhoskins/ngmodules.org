@@ -1,0 +1,109 @@
+<% title @package.name %>
+
+<% if can? :update, @package %>
+  <div class="alert alert-admin">
+    <div class="row-fluid">
+        <div class="span8 message ">
+          <strong> You are authorized to manage this package</strong>
+        </div>
+        <div class="span4 actions">
+          <%= link_to [:edit, @package], class: "btn btn-warning " do %>
+            <%= icon :edit, true %> Edit
+          <% end %>
+          <%= link_to @package, method: :destroy, confirm: "You sure?", class: "btn btn-danger" do %>
+            <%= icon :trash, true %> Remove
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class="well">
+  <div class="row-fluid">
+    <div class="description span9">
+      <%= @package.description %>
+    </div>
+    <div class="download span3">
+      <%= link_to @package.github_url, class: "btn btn-inverse" do %>
+        <i class="icon-white icon-briefcase"></i>
+        Github
+      <% end %>
+
+      <%= link_to @package.download_url, class: "btn btn-success" do %>
+        <i class="icon-white icon-download"></i>
+        Download
+      <% end %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="homepage span8">
+      <strong>Homepage:</strong> <%= link_to @package.homepage %>
+    </div>
+    <div class="users span4">
+      <%= pluralize_person_uses @package.uses.count %>
+      <%= form_tag [:use, @package], method: :post, class: "likebutton" do |f| %>
+        <% if uses current_user, @package  %>
+          <button name="_method" value="DELETE" class="usethis btn btn-small btn-primary">
+            <span class="current">
+              <i class="icon-white icon-thumbs-up"></i> I use it 
+            </span>
+
+            <span class="hover">
+              <i class="icon-white icon-thumbs-down"></i> No I don't
+            </span>
+          </button>
+        <% else %>
+          <button class="dontusethis btn btn-small">
+            <i class="icon-thumbs-up"></i>
+            I use it
+          </button>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="user author span3">
+      <strong>Author:</strong>
+      <%= link_to @package.owner.profile_url do %>
+        <%= image_tag @package.owner.avatar_url %>
+        <%= @package.owner.nickname %>
+      <% end %>
+    </div>
+    <% unless @package.claimed %>
+      <div class="user submitter span3">
+        <strong>Submitted by:</strong>
+        <%= link_to @package.submitter.profile_url do %>
+          <%= image_tag @package.submitter.avatar_url %>
+          <%= @package.submitter.nickname %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row-fluid">
+    <div class="tags span12">
+      <%= render partial: "tags/tag", collection: @package.tags %>
+    </div>
+  </div>
+</div>
+
+<ul class="detail-tabs nav nav-tabs">
+  <!--
+  <li class="active">
+    <a href="#">README</a>
+  </li>
+
+  <li>
+    <a href="#">Example</a
+  </li>
+  -->
+</ul>
+<div class="detail">
+  <article class="readme markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+
+    <%= @package.readme_html %>
+  </article>
+</div>
+
+<div class="meta">
+  This page was last updated <%= distance_of_time_in_words_to_now @package.updated_at %> ago.
+</div>

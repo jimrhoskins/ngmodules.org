@@ -1,0 +1,32 @@
+<% 
+  if params[:query]
+    title "Search Results for \"#{params[:query]}\""
+  else
+    title "All Modules" 
+  end
+%>
+
+<div class="row">
+  <div class="span9">
+    <%= render @packages %>
+  </div>
+  <div class="span3">
+    <%= link_to new_package_path, class: "btn btn-block btn-success btn-large" do %>
+      <%= icon :plus_sign, true %>
+      Add a Module
+    <% end %>
+
+    <h3 class="sidebar-header">Popular Tags</h3>
+    <div class="tags">
+      <% Package.tag_counts.each do |tag| %>
+        <%= link_to tag_path(tag.name), class: "btn btn-small btn-info" do %>
+          <%= icon :tag, true %>
+          <%= "#{tag.name} (#{tag.count})" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="tags-link">
+      <%= link_to "All Tags", tags_path %>
+    </div>
+  </div>
+</div>

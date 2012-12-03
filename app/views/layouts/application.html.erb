@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %> - Angular Modules</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <% unless Rails.env == 'production' %>
+    <script>
+      // Sign JS Github API request with client key and secret in development
+      // This circumvents unauthenticated throttling of 60/hour
+      GITHUB_AUTH = {
+        client_id: "<%= ENV["GITHUB_KEY"]%>",
+        client_secret: "<%= ENV["GITHUB_SECRET"] %>"
+      }
+    </script>
+  <% end %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <a class="logo" href="/">
+            A<span class="hilight">ng</span>ular Modules
+            <small>Find <span class="hilight">Modules</span> for AngularJS</small>
+          </a>
+        </div>
+        <div class="span5 search">
+          <form action="<%= packages_path %>" method="GET" class=" form-search">
+            <div class='input-append'>
+              <%= text_field_tag :query, params[:query], class: "search-query", placeholder: "Search" %>
+              <button type="submit" class="btn"><%= icon :search %></button>
+            </div>
+          </form>
+        </div>
+        <div class="span3 auth">
+          <% if current_user %>
+            <div class="btn-group">
+              <%= link_to  "#", class: "btn ", "data-toggle" => "dropdown" do %>
+                <%= image_tag current_user.avatar_url %>
+                <%= current_user.nickname %>
+                <span class="caret"></span>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to logout_path do %>
+                    <%= icon :lock %>
+                    Log out
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to  login_path(redirect_to: request.path), class: "btn" do %>
+              <%= icon :lock %> 
+              Sign in with Github
+            <% end %>
+          <% end %>
+          
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrapper">
+    <div class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert <%= alert_class(type) %>">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <%= message %>
+        </div>
+      <% end %>
+      <h1 class="page-header"><%= @title %></h1>
+      <%= yield %>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      &copy; <%= Date.today.year %> ngmodules.org 
+      |
+      Maintained by <%= link_to "Jim Hoskins", "http://jimhoskins.com" %>
+      |
+      This site is open source. 
+      Get the <%= link_to "source on Github", "https://github.com/jimrhoskins/ngmodules.org" %> or 
+      <%= link_to "report an issue", "https://github.com/jimrhoskins/ngmodules.org/issues" %>.
+
+    </div>
+  </div>
+</body>
+</html>

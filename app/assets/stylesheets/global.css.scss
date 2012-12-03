@@ -1,0 +1,25 @@
+.logo, .logo:hover {
+  font-size: 2em;
+  line-height: 1.2;
+  display: block;
+  padding: 10px 5px;
+
+  color: #000;
+  text-decoration: none;
+}
+
+
+pre {
+  color: #333;
+}
+
+.field_with_errors {
+  display: inline;
+  input, textarea {
+    border-color: #e51400;
+  }
+
+  label {
+    color: #e51400;
+  }
+}

@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ng-modules_development
+  pool: 5
+  username: jhoskins
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ng-modules_test
+  pool: 5
+  username: jhoskins
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: ng-modules_production
+  pool: 5
+  username: jhoskins
+  password:
