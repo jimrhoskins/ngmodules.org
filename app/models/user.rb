@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
       user.provider = oauth["provider"]
       user.uid = oauth["uid"]
 
-      user.update_from_oauth
+      user.update_from_oauth oauth
     end
   end
 
