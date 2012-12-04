@@ -1,9 +1,6 @@
 require 'minitest_helper'
 
 describe 'Add module integration' do
-  before do
-    Package.destroy_all
-  end
 
   it 'shows the form from when logged in' do
     # Login and visit homepage
@@ -31,8 +28,8 @@ describe 'Add module integration' do
     # Check for various properties
     page.text.must_include "AwesomeMod"
     page.text.must_include "http://example.com/mod"
-    page.text.must_include "tag1"
-    page.text.must_include "tag2"
+    page.text.must_include "Tag1"
+    page.text.must_include "Tag2"
     page.text.wont_include 'Github URL'
     page.text.must_include 'ReadmeHeader'
 
@@ -45,7 +42,6 @@ describe 'Add module integration' do
   end
 
   it "doesn't show the form when logged out" do
-    visit logout_path
     visit root_path
     click_link "Add a Module"
 

@@ -2,8 +2,9 @@ require 'minitest_helper'
 
 describe 'module integration' do
   before do
-    Package.delete_all
+    HTTPMocks::stub_octocat
   end
+
   it 'finds by name' do
     create :package, name: "simplemodule", submitter: create(:user)
     create :package, name: "dotted.module_name", submitter: create(:user)

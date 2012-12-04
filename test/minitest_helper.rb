@@ -7,9 +7,13 @@ require 'factories'
 require 'webmock/minitest'
 require 'http_stubs'
 
+DatabaseCleaner.strategy = :transaction
 
 class MiniTest::Spec
   include FactoryGirl::Syntax::Methods
+
+  before { DatabaseCleaner.start }
+  after  { DatabaseCleaner.clean }
 end
 
 class IntegrationTest < MiniTest::Spec
@@ -17,6 +21,7 @@ class IntegrationTest < MiniTest::Spec
   include Capybara::DSL
   register_spec_type(/integration$/, self)
 
+  before { Capybara.reset_sessions! }
 
   def login_with_oauth
     visit "/auth/github"

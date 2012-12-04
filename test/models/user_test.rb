@@ -1,22 +1,19 @@
 require 'minitest_helper'
 
 describe User do
-  before do
-    [Package, Use, User].each {|m| m.delete_all }
-  end
 
   it 'has many owned and submitted projects' do
     angulars = create :user, nickname: 'angulars'
     octocat = create :user, nickname: 'octocat'
 
-    angulars.submitted_packages.create attributes_for(:package, github_repo: "octocat/foo")
+    pkg = angulars.submitted_packages.create attributes_for(:package, github_repo: "octocat/foo")
 
     angulars.reload
-    angulars.submitted_packages.must_equal [Package.first]
+    angulars.submitted_packages.must_equal [pkg]
     angulars.owned_packages.must_be_empty
 
     octocat.reload
-    octocat.owned_packages.must_equal [Package.first]
+    octocat.owned_packages.must_equal [pkg]
     octocat.submitted_packages.must_be_empty
   end
 
