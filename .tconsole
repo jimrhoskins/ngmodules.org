@@ -1,0 +1,16 @@
+TConsole::Config.run do |config|
+  # Configures the directory where your tests are located
+  config.test_dir = "./test"
+
+  # Include paths that should be added to Ruby's load path
+  config.include_paths = ["./test", "./lib"]
+
+
+  # File sets are the named sets of files that can be executed. A file
+  # set named "all" must be included.
+  config.file_sets = {
+    "all" => ["test/**/*_test.rb"],
+    "models" => ["test/models/**/*_test.rb"],
+    "integration" => ["test/integration/**/*_test.rb"]
+  }
+end

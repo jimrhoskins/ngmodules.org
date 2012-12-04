@@ -28,8 +28,10 @@ end
 
 group :test do
 
+  gem "capybara", "~> 2.0.1"
   gem 'minitest', '~> 3.3.0'
   gem 'turn'
   gem 'tconsole', '~> 1.2.5'
   gem 'factory_girl_rails', '~> 4.0', :require => false
+  gem "webmock", "~> 1.9.0"
 end

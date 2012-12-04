@@ -8,11 +8,13 @@ class Package < ActiveRecord::Base
 
   validates :name, format: /^[a-z0-9_\.-]+$/i
   validates :github_repo, format: /^[a-z0-9][a-z0-9-]*\/[a-z0-9\._-]+$/
+  validates :description, presence: true
 
   belongs_to :owner, class_name: "User"
   belongs_to :submitter, class_name: "User"
 
   has_many :uses
+  has_many :users, through: :uses
 
   before_save :associate_user
 

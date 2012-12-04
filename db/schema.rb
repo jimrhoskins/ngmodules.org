@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203201544) do
+ActiveRecord::Schema.define(:version => 20121204020551) do
 
   create_table "packages", :force => true do |t|
     t.string   "name"
     t.string   "github_repo"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "homepage"
     t.string   "description"
     t.text     "readme_markdown"
     t.integer  "owner_id"
     t.integer  "submitter_id"
+    t.integer  "uses_count",      :default => 0
   end
 
   create_table "taggings", :force => true do |t|

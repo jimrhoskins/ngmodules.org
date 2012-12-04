@@ -1,8 +1,6 @@
 class PackagesController < ApplicationController
   before_filter :load_package, except: [:index, :new, :create]
-  authorize_resource  except: [:like]
-  #skip_authorization_check only: [:like]
-
+  authorize_resource
 
   def index
     @packages = Package.search(params[:query])
@@ -19,7 +17,7 @@ class PackagesController < ApplicationController
   end
 
   def create
-    @package = current_user.submitted_packages.build(params[:package])
+    @package = current_user.submitted_packages.build(permitted_params.package)
     if @package.save
       redirect_to @package
     else
@@ -28,7 +26,7 @@ class PackagesController < ApplicationController
   end
 
   def update
-    if @package.update_attributes(params[:package])
+    if @package.update_attributes(permitted_params.package)
       redirect_to @package
     else
       render action: :edit
@@ -43,7 +41,7 @@ class PackagesController < ApplicationController
   def like
     authorize! :read, @package
     if current_user
-      Use.find_or_create_by_user_id_and_package_id(current_user.id, params[:id])
+      current_user.does_use(@package)
     else
       flash[:error] = "You must be logged in to tell the world you use this module."
     end
@@ -52,10 +50,8 @@ class PackagesController < ApplicationController
 
   def dislike
     authorize! :read, @package
-    if current_user
-      use = Use.find_by_user_id_and_package_id(current_user.id, params[:id])
-      use.destroy if use
-    end
+
+    current_user.does_not_use(@package) if current_user
     redirect_to @package
   end
 

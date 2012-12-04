@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :nickname, :provider, :uid
 
   has_many :submitted_packages, class_name: "Package", foreign_key: :submitter_id
   has_many :owned_packages, class_name: "Package", foreign_key: :owner_id
 
   has_many :uses
+  has_many :used_packages, through: :uses, source: :package
 
   def self.find_or_create_by_oauth(oauth) 
     user = find_by_provider_and_uid(oauth["provider"], oauth["uid"])
@@ -49,12 +49,20 @@ class User < ActiveRecord::Base
       user.email = api.email
       user.avatar_url = api.avatar_url
     end
-  rescue Github::Error::NotFound(e)
+  rescue Github::Error::NotFound
     nil
   end
 
   def profile_url
     "https://github.com/#{nickname}"
+  end
+
+  def does_use(package)
+    uses.find_or_create_by_package_id! package.id
+  end
+
+  def does_not_use(package)
+    uses.where(package_id: package.id).destroy_all
   end
 
 
