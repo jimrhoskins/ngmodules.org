@@ -16,6 +16,20 @@ describe Package do
 
   end
 
+  it 'enforces uniqueness of name' do
+    octocat = create :user
+    create :package, name: "specialname", submitter: octocat
+    dup = build :package, name: "specialname", submitter: octocat
+
+    dup.save.must_equal false
+    dup.errors[:name].wont_be_empty
+
+    dup = build :package, name: "sPecIalNAMe", submitter: octocat
+
+    dup.save.must_equal false
+    dup.errors[:name].wont_be_empty
+  end
+
   it 'should be taggable' do
     package = create :package
     package.tag_list = "foo, bar"

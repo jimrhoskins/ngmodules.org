@@ -1,5 +1,5 @@
 NgModules::Application.routes.draw do
-  resources :packages, path: "modules" do
+  resources :packages, path: "modules", constraints: {:id => /.+/} do
     post "use", on: :member, action: :like
     delete "use", on: :member, action: :dislike
   end

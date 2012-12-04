@@ -1,14 +1,21 @@
 class Package < ActiveRecord::Base
   include PgSearch
 
+  def to_param
+    name
+  end
+
   pg_search_scope :fulltext_search,
     against: [:name, :github_repo, :description, :readme_markdown]
   acts_as_taggable
   attr_accessible :github_repo, :name, :description, :homepage, :readme_markdown, :tag_list
 
-  validates :name, format: /^[a-z0-9_\.-]+$/i
+  validates :name, 
+    format: /^[a-z0-9_\.-]+$/i,
+    uniqueness: {case_sensitive: false}
   validates :github_repo, format: /^[a-z0-9][a-z0-9-]*\/[a-z0-9\._-]+$/
   validates :description, presence: true
+
 
   belongs_to :owner, class_name: "User"
   belongs_to :submitter, class_name: "User"

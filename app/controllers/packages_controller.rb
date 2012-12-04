@@ -58,6 +58,6 @@ class PackagesController < ApplicationController
   private
 
   def load_package 
-    @package = Package.find(params[:id])
+    @package = Package.find_by_name!(params[:id])
   end
 end

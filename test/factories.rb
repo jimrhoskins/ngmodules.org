@@ -3,7 +3,7 @@ require 'factory_girl'
 FactoryGirl.define do
   factory :package do
     github_repo "octocat/ngmod"
-    name "ngMod"
+    sequence :name do |n| "module.#{n}" end
     description "An awesome module"
   end
 
