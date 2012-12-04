@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   before_filter :load_package, except: [:index, :new, :create]
-  authorize_resource
+  authorize_resource except: [:like]
 
   def index
     @packages = Package.search(params[:query])

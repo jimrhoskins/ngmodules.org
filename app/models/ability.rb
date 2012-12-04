@@ -6,6 +6,7 @@ class Ability
 
     # Everybody can read everything
     can :read, :all
+    can :read, Package
 
     # Admins can do anything
     if user.admin?

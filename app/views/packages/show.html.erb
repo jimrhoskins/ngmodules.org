@@ -86,22 +86,34 @@
   </div>
 </div>
 
-<ul class="detail-tabs nav nav-tabs">
-  <!--
+<ul id="detail-tabs" class="detail-tabs nav nav-tabs">
   <li class="active">
-    <a href="#">README</a>
+    <a href="#readme" data-toggle="tab">
+      <%= icon :list_alt %>
+      README
+    </a>
   </li>
 
-  <li>
-    <a href="#">Example</a
-  </li>
-  -->
+  <% if comments_enabled? %>
+    <li>
+      <a href="<%= package_path(@package)%>" data-target="#discussion" data-toggle="tab">
+        <%= icon :comment %>
+        Discussion
+      </a>
+    </li>
+  <% end %>
 </ul>
-<div class="detail">
-  <article class="readme markdown-body entry-content" itemprop="mainContentOfPage">
 
+<div class="tab-content detail">
+  <div id="readme" class="active tab-pane readme markdown-body entry-content" >
     <%= @package.readme_html %>
-  </article>
+  </div>
+
+  <% if comments_enabled? %>
+    <div id="discussion" class="tab-pane" >
+      <%= comments_code %>
+    </div>
+  <% end %>
 </div>
 
 <div class="meta">
