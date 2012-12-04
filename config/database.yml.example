@@ -1,23 +1,23 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: ng-modules_development
+  database: ngmodules_development
   pool: 5
-  username: jhoskins
+  username: ngmodules
   password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: ng-modules_test
+  database: ngmodules_test
   pool: 5
-  username: jhoskins
+  username: ngmodules
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: ng-modules_production
+  database: ngmodules_production
   pool: 5
-  username: jhoskins
+  username: ngmodules
   password:
