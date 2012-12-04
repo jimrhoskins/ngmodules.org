@@ -62,7 +62,7 @@
     </div>
   </div>
   <div class="row-fluid">
-    <div class="user author span3">
+    <div class="user author span4">
       <strong>Author:</strong>
       <%= link_to @package.owner.profile_url do %>
         <%= image_tag @package.owner.avatar_url %>
@@ -70,7 +70,7 @@
       <% end %>
     </div>
     <% unless @package.claimed %>
-      <div class="user submitter span3">
+      <div class="user submitter span4">
         <strong>Submitted by:</strong>
         <%= link_to @package.submitter.profile_url do %>
           <%= image_tag @package.submitter.avatar_url %>
