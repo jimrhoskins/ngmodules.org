@@ -2,7 +2,12 @@
   <div class="well">
     <div class="row-fluid">
       <div class="span9">
-        <strong class="title"><%= link_to package.name, package %></strong>
+        <strong class="title">
+          <%= link_to package do %>
+            <%= package.name %>
+            <small>&mdash; <%= package.github_user %></small>
+          <% end %>
+        </strong>
       </div>
       <div class="uses span3">
         <i class="icon-thumbs-up"></i>
