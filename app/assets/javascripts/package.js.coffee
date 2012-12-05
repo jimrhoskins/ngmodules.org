@@ -38,13 +38,16 @@ UP = "angular/angular.js"
 UP = "rails/rails"
 
 
+GITHUB_STRIP_RE = /(^.+:\/\/github.com\/)|(\.git\s*$)/gi
 
 $ ->
   valid = ->
     $('#package_github_repo').val().match(/^[a-z0-9][a-z0-9-]+\/[a-z0-9_\.-]+$/i)
 
-  $('#package_github_repo').keyup ->
+  $('#package_github_repo').bind 'keyup change', ->
     $('.load-from-github').toggleClass('disabled', !valid())
+    if $(this).val().match(GITHUB_STRIP_RE)
+      $(this).val $(this).val().replace(GITHUB_STRIP_RE, '')
   .keyup()
 
   $('.load-from-github').click ->
