@@ -37,7 +37,7 @@
   </div>
   <div class="row-fluid">
     <div class="homepage span8">
-      <strong>Homepage:</strong> <%= link_to @package.homepage %>
+      <strong>Homepage:</strong> <%= link_to @package.homepage, @package.homepage %>
     </div>
     <div class="users span4">
       <%= pluralize_person_uses @package.uses.count %>
