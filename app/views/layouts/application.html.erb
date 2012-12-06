@@ -18,6 +18,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% unless cookies[:hideBanner] %>
+    <div class="banner">
+      <div class="container">
+        <a href="#" class="pull-right close-link "> Hide this message.</a>
+        <h3>We're just getting started!</h3>
+        <p>
+        The mission of Angular Modules is to provide a place to share and find reusable 
+        <%= link_to "AngularJS", "http://angularjs.org" %> modules, directives and services.
+        If you know of a  module to share, <%= link_to "submit it!", new_package_path %>. You don't 
+        have to be the author to submit the module.
+        </p>
+
+        <p> If you experience any problems, or have any feature requests, let me know by 
+        <a href="https://github.com/jimrhoskins/ngmodules.org/issues"> submitting an issue on Github</a>
+        </p>
+
+      </div>
+    </div>
+  <% end %>
   <header class="app-header">
     <div class="container">
       <div class="row">

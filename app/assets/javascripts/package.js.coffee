@@ -41,6 +41,11 @@ UP = "rails/rails"
 GITHUB_STRIP_RE = /(^.+:\/\/github.com\/)|(\.git\s*$)/gi
 
 $ ->
+  $('.close-link').click ->
+    (expire = new Date()).setTime(new Date().getTime() + 1e12)
+    document.cookie = "hideBanner=1;expires=#{expire.toGMTString()}"
+    $('.banner').hide()
+  
   valid = ->
     $('#package_github_repo').val().match(/^[a-z0-9][a-z0-9-]+\/[a-z0-9_\.-]+$/i)
 
