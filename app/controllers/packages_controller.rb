@@ -35,7 +35,7 @@ class PackagesController < ApplicationController
 
   def destroy
     @package.destroy
-    redirect_to Package
+    redirect_to Package, notice: "Package #{@package.name} has been removed."
   end
 
   def like

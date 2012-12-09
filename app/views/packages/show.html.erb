@@ -10,7 +10,7 @@
           <%= link_to [:edit, @package], class: "btn btn-warning " do %>
             <%= icon :edit, true %> Edit
           <% end %>
-          <%= link_to @package, method: :destroy, confirm: "You sure?", class: "btn btn-danger" do %>
+          <%= link_to @package, method: :delete, confirm: "You sure?", class: "btn btn-danger" do %>
             <%= icon :trash, true %> Remove
           <% end %>
         </div>

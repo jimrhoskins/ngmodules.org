@@ -24,7 +24,7 @@
         <%= link_to [:edit, package], class: "btn btn-warning btn-mini" do %>
           <%= icon :edit, true %> Edit
         <% end %>
-        <%= link_to package, method: :destroy, confirm: "You sure?", class: "btn btn-danger btn-mini" do %>
+        <%= link_to package, method: :delete, confirm: "You sure?", class: "btn btn-danger btn-mini" do %>
           <%= icon :trash, true %> Remove
         <% end %>
       </div>
