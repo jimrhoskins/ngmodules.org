@@ -10,6 +10,28 @@
   }
 }
 
+.subnav {
+  border-bottom: solid 1px darken(@grayLighter, 17%);
+
+  .nav {
+    margin : 0;
+
+    a {
+      color: @gray;
+    }
+
+    .active {
+      background: darken(@grayLight, 10%);
+      a {
+        .border-radius(0);
+        color: @white;
+        background: none;
+      }
+    }
+  }
+
+}
+
 .hide-header {
   visibility: hidden;
   overflow: hide;
@@ -22,11 +44,14 @@ body {
 }
 
 .wrapper {
+  @size: 8px;
   background: @white;
   padding-bottom: 40px;
+  box-shadow: inset 0 @size @size -@size @grayLight; 
 }
 .app-header {
   background: #333;
+  border-bottom: solid 1px #222;
   padding: 20px 0;
 
   .auth, .search {

@@ -84,6 +84,21 @@
       </div>
     </div>
   </header>
+  <div class="subnav">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <%= nav_li controller: "packages", action: ["index", "show"] do %>
+          <%= link_to "Modules", root_url %>
+        <% end %>
+        <%= nav_li at: "packages#new" do %>
+          <%= link_to "Submit a Module", new_package_path %>
+        <% end %>
+        <%= nav_li controller: "tags" do %>
+          <%= link_to "Tags", tags_path %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
   <div class="wrapper">
     <div class="container">

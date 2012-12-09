@@ -20,4 +20,25 @@ module ApplicationHelper
       "alert-#{type}"
     end
   end
+
+  def nav_li(opts = {})
+    if opts[:at] 
+      controller, action = opts.delete(:at).split("#")
+      opts[:controller] = controller
+      opts[:action] = action
+    end
+    active = true
+    opts.each do |key, val|
+      vals = [*val]
+      passes = false
+      vals.each do |val|
+        passes ||= val == params[key]
+      end
+      active &&= passes
+    end
+    content_tag :li, class: "#{'active' if active}" do
+      yield
+    end
+
+  end
 end
