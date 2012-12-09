@@ -35,5 +35,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0', :require => false
   gem "webmock", "~> 1.9.0"
   gem "database_cleaner", "~> 0.9.1"
+  gem "rack-test", "~> 0.6.2"
+
 
 end

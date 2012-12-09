@@ -4,6 +4,7 @@
   <title><%= @title %> - Angular Modules</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <link href="<%= atom_path %>" type="application/atom+xml" rel="alternate" title="Latest AngularJS Modules">
   <% unless Rails.env == 'production' %>
     <script>
       // Sign JS Github API request with client key and secret in development

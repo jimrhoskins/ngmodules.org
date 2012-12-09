@@ -21,12 +21,24 @@ class IntegrationTest < MiniTest::Spec
   include Capybara::DSL
   register_spec_type(/integration$/, self)
 
-  before { Capybara.reset_sessions! }
+  after do
+    Capybara.reset_sessions!
+  end
+
+
+  before do
+    HTTPMocks::stub_octocat
+  end
 
   def login_with_oauth
     visit "/auth/github"
   end
 end
+
+#class APITest < ActionDispatch::IntegrationTest
+
+  #register_spec_type /API$/, self
+#end
 
 Capybara.default_host = "http://ngmodules.org"
 

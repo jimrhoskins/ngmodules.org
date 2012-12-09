@@ -3,7 +3,11 @@ class PackagesController < ApplicationController
   authorize_resource except: [:like]
 
   def index
-    @packages = Package.search(params[:query]).order('uses_count DESC, created_at DESC')
+    @packages = Package.search(params[:query]).sort(params[:sort])
+    respond_to do |format|
+      format.html
+      format.atom { render layout: false}
+    end
   end
 
   def new

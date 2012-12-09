@@ -215,6 +215,7 @@ DEPENDENCIES
   omniauth-github (~> 1.0.3)
   pg
   pg_search (~> 0.5.7)
+  rack-test (~> 0.6.2)
   rails (= 3.2.9)
   redcarpet (~> 2.2.2)
   sass-rails (~> 3.2.3)

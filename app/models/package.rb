@@ -25,6 +25,15 @@ class Package < ActiveRecord::Base
 
   before_save :associate_user
 
+  scope :sort, lambda { |sort|
+    case sort
+    when "newest"
+      order "created_at DESC"
+    else
+      order "uses_count DESC, created_at DESC"
+    end
+  }
+
   def self.search(query)
     if query.present?
       fulltext_search(query)

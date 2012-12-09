@@ -11,6 +11,7 @@ TConsole::Config.run do |config|
   config.file_sets = {
     "all" => ["test/**/*_test.rb"],
     "models" => ["test/models/**/*_test.rb"],
+    "api" => ["test/api/**/*_test.rb"],
     "integration" => ["test/integration/**/*_test.rb"]
   }
 end
