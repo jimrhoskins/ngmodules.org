@@ -9,6 +9,7 @@
 <div class="row">
   <div class="span9">
     <%= render @packages %>
+    <%= paginate @packages %>
   </div>
   <div class="span3">
     <%= link_to new_package_path, class: "btn btn-block btn-success btn-large" do %>

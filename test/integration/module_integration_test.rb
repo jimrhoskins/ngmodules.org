@@ -21,4 +21,17 @@ describe 'module integration' do
 
   end
 
+  it 'paginates by 15' do 
+    20.times { create :package }
+    visit "/"
+
+
+    page.all(".package").count.must_equal 15
+
+    page.find('.pagination').click_link "2"
+
+    page.all(".package").count.must_equal 5
+
+  end
+
 end

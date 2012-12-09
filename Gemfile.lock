@@ -85,6 +85,9 @@ GEM
     json (1.7.5)
     jwt (0.1.5)
       multi_json (>= 1.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     less (2.2.2)
       commonjs (~> 0.2.6)
     less-rails (2.2.6)
@@ -210,6 +213,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   github_api (~> 0.8.1)
   jquery-rails
+  kaminari (~> 0.14.1)
   less-rails-bootstrap (~> 2.2.0)
   minitest (~> 3.3.0)
   omniauth-github (~> 1.0.3)

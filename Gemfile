@@ -14,6 +14,8 @@ gem "acts-as-taggable-on", "~> 2.3.3"
 gem "cancan", "~> 1.6.8"
 gem "less-rails-bootstrap", "~> 2.2.0"
 gem "pg_search", "~> 0.5.7"
+gem "kaminari", "~> 0.14.1"
+
 
 
 
