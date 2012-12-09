@@ -3,6 +3,7 @@ class PackagesController < ApplicationController
   authorize_resource except: [:like]
 
   def index
+    params[:sort] ||= 'popular'
     @packages = Package.search(params[:query]).sort(params[:sort]).page(params[:page]).per(15)
     respond_to do |format|
       format.html

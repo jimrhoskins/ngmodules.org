@@ -1,5 +1,10 @@
 NgModules::Application.routes.draw do
   get "/modules.atom", to: "packages#index", format: :atom, sort: 'newest', as: :atom
+
+  get "/popular", to: "packages#index", sort: 'popular', as: :popular_modules
+  get "/newest", to: "packages#index", sort: 'newest', as: :newest_modules
+  get "/all", to: "packages#index", sort: 'all', as: :all_modules
+
   resources :packages, path: "modules", constraints: {:id => /.+/} do
     post "use", on: :member, action: :like
     delete "use", on: :member, action: :dislike

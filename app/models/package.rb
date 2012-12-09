@@ -26,10 +26,13 @@ class Package < ActiveRecord::Base
   before_save :associate_user
 
   scope :sort, lambda { |sort|
+    sort ||= 'popular'
     case sort
     when "newest"
       order "created_at DESC"
-    else
+    when "all"
+      order "name ASC"
+    when 'popular'
       order "uses_count DESC, created_at DESC"
     end
   }

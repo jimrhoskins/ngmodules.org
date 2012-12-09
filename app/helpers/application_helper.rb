@@ -1,5 +1,6 @@
 module ApplicationHelper
-  def title(title)
+  def title(title, opts={})
+    @hide_title = opts[:hide]
     @title= title
   end
 

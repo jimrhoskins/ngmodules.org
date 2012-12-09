@@ -93,7 +93,7 @@
           <%= message %>
         </div>
       <% end %>
-      <h1 class="page-header"><%= @title %></h1>
+      <h1 class="page-header <%= "hide-header" if @hide_title %>"> <%= @title %></h1>
       <%= yield %>
     </div>
   </div>

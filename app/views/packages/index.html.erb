@@ -2,9 +2,36 @@
   if params[:query]
     title "Search Results for \"#{params[:query]}\""
   else
-    title "All Modules" 
+    title "#{params[:sort].titlecase} Modules", hide: true
   end
 %>
+
+<% unless params[:query] %>
+  <% #TODO fix sort + search interface, hide for now  %>
+  <ul class="nav nav-tabs module-order">
+    <li class="<%= 'active' if params[:sort] == 'popular' %>">
+      <%= link_to  popular_modules_path do %>
+        <%= icon :thumbs_up %>
+        Popular
+      <% end %>
+    </li>
+    <li class="<%= 'active' if params[:sort] == 'newest' %>">
+      <%= link_to  newest_modules_path do %>
+        <%= icon :time %>
+        Newest
+      <% end %>
+    </li>
+    <li class="<%= 'active' if params[:sort] == 'all' %>">
+      <%= link_to  all_modules_path do %>
+        <%= icon :arrow_down %>
+        A-Z
+      <% end %>
+    </li>
+    <li class="count">
+    <%= Package.count %> modules
+    </li>
+  </ul>
+<% end %>
 
 <div class="row">
   <div class="span9">

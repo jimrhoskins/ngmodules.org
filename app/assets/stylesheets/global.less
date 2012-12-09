@@ -9,6 +9,14 @@
     margin: 5px;
   }
 }
+
+.hide-header {
+  visibility: hidden;
+  overflow: hide;
+  margin: 0 0 30px;
+  padding: 0;
+  height: 0;
+}
 body {
   background: @grayLighter;
 }
@@ -169,4 +177,43 @@ body {
 
 a small {
   color: #999;
+}
+
+.module-order {
+  .active {
+    font-weight: bold;
+    color: @grayDark;
+    i {
+      margin-top: 3px;
+    }
+  }
+
+  i {
+    margin-top: 2px;
+    opacity: 0.8;
+  }
+
+
+  li a {
+    background: @grayLighter;
+    border-bottom: @grayLight;
+    margin-right: 10px;
+    color: @gray;
+  }
+
+  .count {
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+    font-weight: bold;
+  }
+
+  > li > a:hover, > li > a:active {
+    background: darken(@grayLighter, 4%);
+  }
+
+  a {
+    font-size: 16px;
+    color: @black;
+  }
 }
