@@ -15,6 +15,12 @@ describe Package do
     package.errors[:description].wont_be_empty
 
   end
+  
+  it 'accepts valid github_repos' do
+    build(:package, github_repo: "foo/bar1").valid?.must_equal true
+    build(:package, github_repo: "foo/BAR2").valid?.must_equal true
+
+  end
 
   it 'enforces uniqueness of name' do
     octocat = create :user

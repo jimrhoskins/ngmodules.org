@@ -13,7 +13,7 @@ class Package < ActiveRecord::Base
   validates :name, 
     format: /^[a-z0-9_\.-]+$/i,
     uniqueness: {case_sensitive: false}
-  validates :github_repo, format: /^[a-z0-9][a-z0-9-]*\/[a-z0-9\._-]+$/
+  validates :github_repo, format: /^[a-z0-9][a-z0-9-]*\/[a-z0-9\._-]+$/i
   validates :description, presence: true
 
 
