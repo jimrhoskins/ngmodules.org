@@ -1,0 +1,40 @@
+.blog-meta {
+  img {
+    height: 60px;
+  }
+}
+
+.blog-title {
+  margin-top: 0px;
+}
+
+h1.blog {
+position: relative;
+overflow: hidden;
+
+border-width: 1px 0;
+border-color: @grayLighter;
+border-style: solid;
+text-align: center;
+color: @gray;
+margin-bottom: 40px;
+
+padding: 10px 0;
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.5);
+
+  }
+  &:before {
+    top: -12px;
+  }
+
+  &:after {
+    bottom: -12px;
+  }
+}

@@ -22,12 +22,12 @@ module ApplicationHelper
   end
 
   def nav_li(opts = {})
+    active = opts.keys.count > 0
     if opts[:at] 
       controller, action = opts.delete(:at).split("#")
       opts[:controller] = controller
       opts[:action] = action
     end
-    active = true
     opts.each do |key, val|
       vals = [*val]
       passes = false

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="span9">
+    <% if defined? detail %>
+      <h2 class="blog-title"><%= blog_post.title %></h2>
+    <% else %>
+      <h2 class="blog-title"><%= link_to blog_post.title, blog_post %></h2>
+    <% end %>
+    <div class="contents">
+      <%= blog_post.content_html %>
+    </div>
+    <% if defined? detail %>
+      <hr>
+      <%= comments_code %>
+    <% else %>
+      <%= link_to "Comments", blog_post_path(blog_post, anchor: "disqus_thread") %>
+    <% end %>
+  </div>
+  <div class="span3 blog-meta">
+    <div class="media">
+      <%= link_to blog_post.user.profile_url, class: "pull-left" do %>
+        <%= image_tag blog_post.user.avatar_url, class: "media-object" %>
+      <% end %>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <strong> By </strong>
+          <%= link_to blog_post.user.name, blog_post.user.profile_url %>
+        </h4>
+        <div class="">
+          <%= blog_post.published_at.strftime "%b %d, %Y" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

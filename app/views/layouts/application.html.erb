@@ -86,7 +86,7 @@
   </header>
   <div class="subnav">
     <div class="container">
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills pull-left">
         <%= nav_li controller: "packages", action: ["index", "show"] do %>
           <%= link_to "Modules", root_url %>
         <% end %>
@@ -95,6 +95,14 @@
         <% end %>
         <%= nav_li controller: "tags" do %>
           <%= link_to "Tags", tags_path %>
+        <% end %>
+      </ul>
+      <ul class="nav nav-pills pull-right">
+        <%= nav_li controller: "blog_posts" do %>
+          <%= link_to "Blog", blog_posts_path %>
+        <% end %>
+        <%= nav_li do %>
+          <%= link_to "Give Feedback", "https://github.com/jimrhoskins/ngmodules.org/issues" %>
         <% end %>
       </ul>
     </div>

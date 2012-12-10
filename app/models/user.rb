@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :submitted_packages, class_name: "Package", foreign_key: :submitter_id
   has_many :owned_packages, class_name: "Package", foreign_key: :owner_id
+  has_many :blog_posts
 
   has_many :uses
   has_many :used_packages, through: :uses, source: :package

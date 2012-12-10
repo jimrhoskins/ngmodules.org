@@ -1,0 +1,32 @@
+<%= form_for @blog_post, html: {class: "form-horizontal"} do |f| %>
+  <div class="control-group">
+    <%= f.label :title, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :title, class: "input-xxlarge", placeholder: "" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :permalink, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :permalink, class: "input-large", placeholder: "" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :content_markdown, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_area :content_markdown, class: "input-xxlarge", placeholder: "" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :published_at, class: "control-label" %>
+    <div class="controls date_select">
+      <%= f.datetime_select :published_at, class: "", placeholder: "" %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button "Save Draft", class: "btn " %>
+    <%= f.button "Publish Now", name: "blog_post[publish_now]", value: "true", class: "btn btn-primary" %>
+
+  </div>
+<% end %>

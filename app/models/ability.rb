@@ -5,8 +5,9 @@ class Ability
     user ||= User.new
 
     # Everybody can read everything
-    can :read, :all
     can :read, Package
+    can :read, BlogPost
+
 
     # Admins can do anything
     if user.admin?

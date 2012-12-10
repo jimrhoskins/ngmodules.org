@@ -13,4 +13,19 @@ class PermittedParams < Struct.new(:params, :user)
       :readme_markdown
     ]
   end
+  
+  def blog_post
+    params.require(:blog_post).permit(*blog_post_attributes)
+  end
+
+  def blog_post_attributes 
+    [
+      :title,
+      :permalink,
+      :content_markdown,
+      :published_at,
+      :published,
+      :publish_now
+    ]
+  end
 end

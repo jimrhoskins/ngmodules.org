@@ -1,4 +1,5 @@
 NgModules::Application.routes.draw do
+
   get "/modules.atom", to: "packages#index", format: :atom, sort: 'newest', as: :atom
 
   get "/popular", to: "packages#index", sort: 'popular', as: :popular_modules
@@ -9,7 +10,12 @@ NgModules::Application.routes.draw do
     post "use", on: :member, action: :like
     delete "use", on: :member, action: :dislike
   end
+
   resources :tags
+
+
+  resources :blog_posts, path: "blog"
+
 
   get "/auth/github/callback", to: "session#create"
   get "/logout", to: "session#destroy", as: :logout

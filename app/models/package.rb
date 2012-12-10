@@ -58,11 +58,7 @@ class Package < ActiveRecord::Base
   end
 
   def readme_html
-    Redcarpet::Markdown.new(
-      AlbinoHTML,
-      lax_spacing: true,
-      fenced_code_blocks: true
-    ).render(readme_markdown || '').html_safe
+    MarkdownRenderer.new.markdown(readme_markdown)
   end
 
   def claimed
@@ -78,9 +74,3 @@ class Package < ActiveRecord::Base
 
 end
 
-class AlbinoHTML < Redcarpet::Render::HTML
-  def block_code(code, language)
-    language ||= "text"
-    Albino.colorize(code, language)
-  end
-end
