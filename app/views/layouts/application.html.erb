@@ -18,7 +18,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= current_user ? 'registered' : 'guest' %>">
   <% unless cookies[:hideBanner] %>
     <div class="banner">
       <div class="container">
@@ -73,7 +73,7 @@
               </ul>
             </div>
           <% else %>
-            <%= link_to  login_path(redirect_to: request.path), class: "btn" do %>
+            <%= link_to  login_path(redirect_to: request.path), class: "btn login-link" do %>
               <%= icon :lock %> 
               Sign in with Github
             <% end %>
@@ -91,7 +91,7 @@
           <%= link_to "Modules", root_url %>
         <% end %>
         <%= nav_li at: "packages#new" do %>
-          <%= link_to "Submit a Module", new_package_path %>
+          <%= link_to "Submit a Module", new_package_path, class: "new_module" %>
         <% end %>
         <%= nav_li controller: "tags" do %>
           <%= link_to "Tags", tags_path %>
