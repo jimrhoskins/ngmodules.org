@@ -10,7 +10,8 @@ class PermittedParams < Struct.new(:params, :user)
       :description,
       :homepage,
       :tag_list,
-      :readme_markdown
+      :readme_markdown,
+      :download_url
     ]
   end
   

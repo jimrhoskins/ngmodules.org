@@ -8,7 +8,7 @@ class Package < ActiveRecord::Base
   pg_search_scope :fulltext_search,
     against: [:name, :github_repo, :description, :readme_markdown]
   acts_as_taggable
-  attr_accessible :github_repo, :name, :description, :homepage, :readme_markdown, :tag_list
+  attr_accessible :github_repo, :name, :description, :homepage, :readme_markdown, :tag_list, :download_url
 
   validates :name, 
     format: /^[a-z0-9_\.-]+$/i,
@@ -54,7 +54,8 @@ class Package < ActiveRecord::Base
   end
 
   def download_url
-    "#{github_url}/archive/master.zip"
+    url = read_attribute(:download_url)
+    (url && !url.empty? && url) || (!"#{github_repo}".empty? && "#{github_url}/archive/master.zip")
   end
 
   def readme_html
