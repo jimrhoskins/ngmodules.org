@@ -46,7 +46,7 @@
 
     <h3 class="sidebar-header">Popular Tags</h3>
     <div class="tags">
-      <% Package.tag_counts.each do |tag| %>
+      <% Package.tag_counts.limit(50).order("taggings.tags_count DESC").each do |tag| %>
         <%= link_to tag_path(tag.name), class: "btn btn-small btn-info" do %>
           <%= icon :tag, true %>
           <%= "#{tag.name} (#{tag.count})" %>
