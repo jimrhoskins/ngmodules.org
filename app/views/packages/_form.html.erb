@@ -26,6 +26,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :download_url, class: "control-label" %>
+    <div class="controls">
+      <%= f.text_field :download_url, class: "input-xlarge", placeholder: "Download link for module" %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :homepage, class: "control-label" %>
     <div class="controls">
       <%= f.text_field :homepage, class: "input-xlarge", placeholder: "http://awesome-module.org" %>

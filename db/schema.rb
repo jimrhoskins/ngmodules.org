@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210002447) do
+ActiveRecord::Schema.define(:version => 20131027014349) do
 
   create_table "blog_posts", :force => true do |t|
     t.string   "title"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20121210002447) do
     t.integer  "owner_id"
     t.integer  "submitter_id"
     t.integer  "uses_count",      :default => 0
+    t.string   "download_url"
   end
 
   create_table "taggings", :force => true do |t|
