@@ -55,7 +55,7 @@ Open http://localhost:3000
 Once you have authenticated, you may wish to set your user as an admin.
 Load the rails console by running `rails console`
 
-When loaded, run the following code, with your Github username in palce
+When loaded, run the following code, with your Github username in place
 of LOGIN
     > User.find_by_nickname("LOGIN").update_attribute :admin, true
     > exit
