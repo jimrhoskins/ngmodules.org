@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'strong_parameters', '~> 0.1.5' 
 gem "omniauth-github", "~> 1.0.3"
 gem 'github_api', '~> 0.8.1'
-gem 'github-markup', '~> 1.4.0'
+gem 'github-markup', :require => 'github/markup'
 gem "redcarpet", "~> 2.2.2"
 gem "dynamic_form", "~> 1.1.4"
 gem "albino", "~> 1.3.3"
