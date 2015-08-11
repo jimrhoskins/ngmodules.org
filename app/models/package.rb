@@ -58,7 +58,7 @@ class Package < ActiveRecord::Base
   end
 
   def readme_html
-    MarkdownRenderer.new.markdown(readme_markdown)
+    GitHub::Markup.render('README.md', readme_markdown)
   end
 
   def claimed
